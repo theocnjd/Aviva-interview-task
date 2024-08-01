@@ -1,12 +1,12 @@
 import pandas as pd
 import collections as ctn
+from re import findall
 
 
 def count_common_words(filename: str):
     """
-    count common words from the supplied json file per
-    row, create an identity column, and output the result
-      data into a csv file.
+      count common words from the supplied json file per row, create an identity column,
+        and output the result data into a csv file.
       """
     print("***** File count processing begins *****")
     # read json file into a variable
@@ -16,11 +16,12 @@ def count_common_words(filename: str):
     df_abstract = pd.json_normalize(read_json['abstract']).rename(columns={"_value": "petitions"})
 
     # read the dataframe as text into a variable
-    write_string = df_abstract.to_string()
+    new_string = df_abstract.to_string().lower()
+    write_string = findall(r"\w*", new_string)
 
     print(" ***** Removing common used words that are less than 5 letters *****")
     # store common words with length greater than 4 into a list
-    split_it = [i for i in write_string.capitalize().split() if len(i) > 4]
+    split_it = [i for i in write_string if len(i) > 4]
 
     # count unique word store in the list
     counter = ctn.Counter(split_it)
@@ -44,7 +45,7 @@ def count_common_words(filename: str):
     # loop through each common word and count its number of occurrence in each row
     for word in common_words:
         for index, row in df_abstract.iterrows():
-            no_of_occurrence_in_petition.append(row["petitions"].strip().count(word))
+            no_of_occurrence_in_petition.append(row["petitions"].strip().lower().count(word))
             if row_count == len(no_of_occurrence_in_petition):
                 df_abstract[word] = no_of_occurrence_in_petition
                 no_of_occurrence_in_petition.clear()
@@ -59,7 +60,7 @@ def count_common_words(filename: str):
 
     # re-order column position to put primary key at the first position
     df_abstract.insert(0, 'petition_id', df_abstract.pop('petition_id'))
-    processed_data = 'final_output.csv'
+    processed_data = 'count_common_words_per_row.csv'
 
     # drop needless columns and write final data to a csv file
     print("***** Saving processed data as a csv file *****")
