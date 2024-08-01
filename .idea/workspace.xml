@@ -5,7 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1647c7f6-48fa-4111-9fa6-cb99b98095ea" name="Changes" comment="Initial commit of the Aviva interview task.">
+      <change afterPath="$PROJECT_DIR$/List_of_common_words.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Count_petition_words.py" beforeDir="false" afterPath="$PROJECT_DIR$/Count_petition_words.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/final_output.csv" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,9 +49,10 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Python.Count_petition_words.executor": "Run",
+    "Python.List_of_common_words.executor": "Run",
     "Python.main.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master"
+    "git-widget-placeholder": "change__file__name"
   }
 }]]></component>
   <component name="RecentsManager">
